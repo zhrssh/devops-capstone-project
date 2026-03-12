@@ -72,12 +72,15 @@ def create_accounts():
 def read_account(id):
     """Read an account by ID"""
     app.logger.info("Request to read an Account with id: %s", id)
+    
+    # Find account
     account = Account.find(id)
     if not account:
         abort(
             status.HTTP_404_NOT_FOUND,
             f"ID {id} not found."
         )
+        
     data = account.serialize()
     return jsonify(data), status.HTTP_200_OK
 
@@ -109,8 +112,16 @@ def update_account(id):
 # DELETE AN ACCOUNT
 ######################################################################
 
-# ... place you code here to DELETE an account ...
+@app.route("/accounts/<int:id>", methods=["DELETE"])
+def delete_account(id):
+    """Delete an Account by ID"""
+    app.logger.info("Request to delete an Account with id: %s", id)
 
+    # Find account
+    account = Account.find(id)
+    account.delete() # Delete account
+
+    return "", status.HTTP_204_NO_CONTENT
 
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
