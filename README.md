@@ -1,4 +1,7 @@
 # DevOps Capstone Project
+---
+![Build Status](https://github.com/zhrssh/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
+
 devops-capstone-project
 
 Submitted by: Zherish Galvin Mayordo
