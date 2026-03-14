@@ -24,6 +24,8 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -133,7 +135,7 @@ class TestAccountService(TestCase):
             f"{BASE_URL}/{account.id}", content_type="application/json"
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
+
         new_account = response.get_json()
         self.assertEqual(new_account["name"], account.name)
         self.assertEqual(new_account["email"], account.email)
@@ -151,9 +153,9 @@ class TestAccountService(TestCase):
     def test_update_account(self):
         """It should update an Account"""
         account = self._create_accounts(1)[0]
-        
+
         # Make changes
-        account.name = "New name" 
+        account.name = "New name"
         data = account.serialize()
 
         # Make request
